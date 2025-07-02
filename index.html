@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>心とカラダのまほう｜踊りつづけるためのまほうをかけます</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      margin: 0;
+      padding: 1em;
+      background: #fff8f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d85a7f;
+      font-size: 1.8em;
+    }
+
+    .step {
+      margin: 1.5em 0;
+      padding: 1em;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .item-imgs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .item-imgs img {
+      width: 90px;
+      margin: 8px;
+      border: 3px solid transparent;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .item-imgs img.selected {
+      border-color: #ff69b4;
+      transform: scale(1.05);
+    }
+
+    select, button {
+      font-size: 1em;
+      padding: 0.5em;
+      margin: 0.5em 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .result {
+      background: #fff;
+      margin-top: 2em;
+      padding: 1em;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+      white-space: pre-line;
+    }
+
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #fairyIcon img {
+
+      display: block;
+      margin: 0.8em auto 0;
+      max-width: 120px;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.4em;
+      }
+
+      .item-imgs img {
+        width: 80px;
+      }
+
+      .result {
+        font-size: 0.95em;
+      }
+    }
+
+    body { font-family: sans-serif; padding: 20px; }
+    select, button { font-size: 1em; margin: 5px; }
+    .result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+    .item-imgs img {
+      width: 100px;
+      margin: 10px;
+      border: 3px solid transparent;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    .item-imgs img.selected {
+      border-color: #ff69b4;
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEWNFVK6K8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEWNFVK6K8');
+</script>
+</head>
+<body>
+  
+  <h1>心とカラダのまほう</h1>
+  <p style="text-align:center; font-size: 1em; color:#555; margin-bottom: 1em;">
+    がんばるあなたに、やさしいまほうをかけます。<br>
+    あなたのために、トゥのまほうで、今日もあなたらしく過ごせますように！
+  </p>
+  <div style="text-align:center; margin-bottom:1.5em;">
+    <img src="placeholder_fairy_header.png" alt="占い紹介イメージ" style="max-width:300px; opacity:0.6; border-radius:10px;">
+  </div>
+
+
+  <p>STEP1：今日の日にちを選んでください</p>
+  <label>今日は何日？：
+    <select id="birthDay">
+      <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+    </select>
+  </label><br>
+
+  <p>STEP2：好きなアイテムをクリックして選んでください</p>
+  <div class="item-imgs">
+    <img src="smartphone.png" alt="スマホ" onclick="selectItem(this, 'toe')">
+    <img src="bag.png" alt="かばん" onclick="selectItem(this, 'bar')">
+    <img src="futon.png" alt="布団" onclick="selectItem(this, 'leotard')">
+  </div>
+
+  <p>STEP3：まほうをかけてほしいのを選んで下さい</p>
+  <label>まほうをかけたいこと：
+    <select id="timing">
+      <option value="self">今日の自分に</option>
+      <option value="plan">大事な予定の前に</option>
+      <option value="week">今週のヒント</option>
+      <option value="rest">休みたいときに</option>
+    </select>
+  </label><br>
+
+  <button onclick="diagnose()">まほうをかける</button>
+
+  
+  <div class="result" id="resultArea"></div>
+  <div id="fairyIcon" style="margin-top:10px;"></div>
+    
+
+  <script>
+    let selectedItem = null;
+    function selectItem(element, item) {
+      selectedItem = item;
+      const allImgs = document.querySelectorAll('.item-imgs img');
+      allImgs.forEach(img => img.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    const fairies = ["レッドフェアリー", "ブルーフェアリー", "ゴールドフェアリー", "グリーンフェアリー", "パープルフェアリー", "ピンクフェアリー", "ホワイトフェアリー"];
+    const messages = {
+  "レッドフェアリー": {
+    "self": "「情熱のまほう」\n・今日のあなたには、エネルギーが満ちています。\n・やりたいことに一歩踏み出す日。\n・あたためた想いを行動に変えてみて。",
+    "plan": "「自信のまほう」\n・緊張しても、あなたの中にある力を信じて。\n・深呼吸して、ゆっくり笑顔を。\n・あなたの言葉や態度が、場を照らします。",
+    "week": "「前向きのまほう」\n・小さな一歩が大きな進展に。\n・意識的に動くことで流れが変わります。\n・“とりあえずやってみる”を大切に。",
+    "rest": "「火を灯す休息」\n・元気をためるために、今日はゆっくり。\n・温かい飲み物と、背中を丸めて休む時間を。\n・休むことも前進です。"
+  },
+  "ブルーフェアリー": {
+    "self": "「静けさのまほう」\n・慌ただしい中でも、自分の呼吸に戻って。\n・静かな空間や音楽が、心を整えてくれます。\n・“静かに整う”がテーマの日。",
+    "plan": "「冷静のまほう」\n・緊張の場面では、一歩引いた視点を。\n・落ち着いた話し方が、信頼を呼びます。\n・言葉選びを丁寧に。",
+    "week": "「整えるまほう」\n・今週は環境や習慣を整えるのがカギ。\n・整理整頓で、心もすっきり。\n・予定の詰めすぎに注意。",
+    "rest": "「深呼吸のまほう」\n・静かな場所で、ただ深呼吸してみて。\n・スマホを閉じて、目を閉じるだけでもOK。\n・静けさの中に、回復の力があります。"
+  },
+  "ゴールドフェアリー": {
+    "self": "「輝きのまほう」\n・今日は自分の魅力に目を向けて。\n・自信を持って、堂々とふるまってOK。\n・あなたらしさが、光になります。",
+    "plan": "「本番力のまほう」\n・準備してきたことは、ちゃんと力になります。\n・笑顔と姿勢が、印象を大きく変えます。\n・“私は大丈夫”と心の中で唱えて。",
+    "week": "「成長のまほう」\n・挑戦するほど、輝きが増します。\n・できたことをしっかり振り返ってみて。\n・褒めノートをつけると◎",
+    "rest": "「自分を満たす休息」\n・美しいものに触れる時間を。\n・鏡を見て、笑顔をつくってみて。\n・あなたの内なる光は、今も健在です。"
+  },
+  "グリーンフェアリー": {
+    "self": "「やすらぎのまほう」\n・自然や植物に触れる時間が、今日の癒しに。\n・深呼吸をして、肩を落としてみて。\n・リズムに身をゆだねると◎",
+    "plan": "「調和のまほう」\n・周りと呼吸を合わせることがポイント。\n・ゆっくり話す、うなずく、微笑む。\n・やさしさが伝わる日です。",
+    "week": "「バランスのまほう」\n・今週は、“がんばる”と“ゆるめる”のバランスが大事。\n・無理しすぎず、自分にもやさしく。\n・緑色を身につけると◎",
+    "rest": "「自然に戻る休息」\n・窓を開けて風を感じるだけでもOK。\n・植物の写真や香りにも癒しの力が。\n・ぼーっとする時間を大切に。"
+  },
+  "パープルフェアリー": {
+    "self": "「感性のまほう」\n・今日は“感じる”ことを大切に。\n・好きな音楽や香り、色を取り入れて。\n・インスピレーションが湧くかも。",
+    "plan": "「ひらめきのまほう」\n・少し変わった視点が、良いアイデアに。\n・会話にちょっとしたユーモアを。\n・自分の“センス”を信じてOK。",
+    "week": "「創造のまほう」\n・今週は、何かをつくる・表現する週。\n・日記やスケッチ、写真などもおすすめ。\n・“好き”を形にしてみて。",
+    "rest": "「夢のまほう」\n・空想や夢に浸る時間が、心を満たします。\n・ぼんやりする時間は“サボり”ではなく“まほう”です。\n・枕元に好きな香りを。"
+  },
+  "ピンクフェアリー": {
+    "self": "「やさしさのまほう」\n・人にやさしく、自分にもやさしく。\n・ありがとうを言葉にしてみて。\n・“笑顔”があなたの今日のまほう。",
+    "plan": "「ぬくもりのまほう」\n・ちょっとした気づかいが、周りを癒します。\n・“どうぞ”“おつかれさま”を口に出して。\n・あなたの温度が伝わります。",
+    "week": "「ハートのまほう」\n・心が動くことを優先してみて。\n・心地よいもの・人・場所を選んでOK。\n・“すき”を大切に。",
+    "rest": "「自分を包む休息」\n・ふわっとした布、甘いもの、やわらかい音楽。\n・五感をやさしく包むもので満たして。\n・自分をぎゅっと抱きしめるように。"
+  },
+  "ホワイトフェアリー": {
+    "self": "「整えるまほう」\n・気になることは、1つずつメモに。\n・身のまわりの整理で、心も整います。\n・スッキリしたら、新しい風が入ります。",
+    "plan": "「信頼のまほう」\n・言葉よりも“落ち着き”が信頼を生みます。\n・ゆっくり話す、丁寧に動く。\n・静かな強さが伝わる日です。",
+    "week": "「習慣のまほう」\n・朝のひとつの習慣が、1週間を変えます。\n・歯磨きしながら深呼吸、でもOK。\n・整えることが未来をつくる。",
+    "rest": "「余白のまほう」\n・何もしない時間に、“必要なもの”が浮かびます。\n・白いノート、白い光、静かな空間。\n・自分をひらく準備の時間。"
+  }
+};
+
+    function diagnose() {
+      const day = parseInt(document.getElementById('birthDay').value);
+      const item = selectedItem;
+      const timing = document.getElementById('timing').value;
+
+      if (!item) {
+        alert("アイテムを1つ選んでください");
+        return;
+      }
+
+      const birthIndex = day % 7;
+      const itemAdd = item === "bar" ? 1 : item === "leotard" ? 2 : 0;
+      const fairyIndex = (birthIndex + itemAdd) % 7;
+      const fairy = fairies[fairyIndex];
+
+      const message = messages[fairy]?.[timing] || "このフェアリーのメッセージは準備中です。";
+
+      
+      const iconMap = {
+        "レッドフェアリー": "fairy_red.png",
+        "ブルーフェアリー": "fairy_blue.png",
+        "ゴールドフェアリー": "fairy_gold.png",
+        "グリーンフェアリー": "fairy_green.png",
+        "パープルフェアリー": "fairy_purple.png",
+        "ピンクフェアリー": "fairy_pink.png",
+        "ホワイトフェアリー": "fairy_white.png"
+      };
+      const iconHTML = `<img src="${iconMap[fairy]}" alt="${fairy}" style="max-width:120px; border-radius:10px;">`;
+      document.getElementById("fairyIcon").innerHTML = iconHTML;
+      document.getElementById("fairyIcon").firstChild.classList.add("fade-in");
+
+      document.getElementById("resultArea").classList.add("fade-in");
+      document.getElementById("resultArea").innerText = `まほう使い トゥ より 今日のまほう💛\n\n${message}`;
+    }
+  </script>
+
+  <div style="text-align:center; margin-top: 2em; padding-top: 1em; border-top: 1px solid #ccc;">
+    <p style="font-size: 0.95em;">もっとバレエの 応援まほう がほしいあなたへ</p>
+    <p>
+      <a href="https://note.com/balletbt_imura/n/na22d69cc1d7c" target="_blank" style="color: #d85a7f; text-decoration: none; font-weight: bold;">⭐ ご案内ページは、こちら</a>
+    </p>
+    <p>
+      <a href="https://www.instagram.com/mahouya_tu_bbt/" target="_blank" style="color: #4078c0; text-decoration: none;">📷 Instagramを見る</a>
+    </p>
+<a href="https://goengo.base.shop/" target="_blank"><img src="mahoshop.png"></a>
+    <p>
+      <a href="https://lin.ee/vNyetUV" target="_blank" style="color: #00b900; text-decoration: none;">💬公式 LINE登録して応援メッセージを受ける</a>
+    </p>
+  </div>
+</body>
+
+</html>
